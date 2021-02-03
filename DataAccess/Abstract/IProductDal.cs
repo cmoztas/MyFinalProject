@@ -1,18 +1,8 @@
 ﻿using Entities.Concrete;
-using System.Collections.Generic;
 
 namespace DataAccess.Abstract
 {
-    public interface IProductDal
+    public interface IProductDal : IEntityRepository<Product>
     {
-        List<Product> GetAll();
-
-        void Add(Product product);
-
-        void Update(Product product);
-
-        void Delete(Product product);
-
-        List<Product> GetAllByCategory(int categoryId);
     }
 }

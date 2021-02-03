@@ -1,7 +1,9 @@
-﻿using DataAccess.Abstract;
+﻿using System;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -21,9 +23,14 @@ namespace DataAccess.Concrete.InMemory
             };
         }
 
-        public List<Product> GetAll()
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
         {
-            return _products;
+            throw new NotImplementedException();
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public void Add(Product product)
@@ -46,11 +53,6 @@ namespace DataAccess.Concrete.InMemory
         {
             Product productToDelete = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
             _products.Remove(productToDelete);
-        }
-
-        public List<Product> GetAllByCategory(int categoryId)
-        {
-            return _products.Where(p => p.CategoryId == categoryId).ToList();
         }
     }
 }
