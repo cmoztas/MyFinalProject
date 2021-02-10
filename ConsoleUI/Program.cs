@@ -6,14 +6,6 @@ namespace ConsoleUI
 {
     internal class Program
     {
-        private static void Main(string[] args)
-        {
-            // DTO - Data Transformation Objects
-
-            ProductTest();
-            //CategoryTest();
-        }
-
         private static void CategoryTest()
         {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
@@ -22,6 +14,14 @@ namespace ConsoleUI
             {
                 Console.WriteLine(category.CategoryName);
             }
+        }
+
+        private static void Main(string[] args)
+        {
+            // DTO - Data Transformation Objects
+
+            ProductTest();
+            //CategoryTest();
         }
 
         private static void ProductTest()

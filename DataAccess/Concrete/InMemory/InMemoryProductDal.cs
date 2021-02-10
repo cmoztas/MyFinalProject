@@ -1,10 +1,10 @@
-﻿using System;
-using DataAccess.Abstract;
+﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -24,9 +24,15 @@ namespace DataAccess.Concrete.InMemory
             };
         }
 
-        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        public void Add(Product product)
         {
-            throw new NotImplementedException();
+            _products.Add(product);
+        }
+
+        public void Delete(Product product)
+        {
+            Product productToDelete = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
+            _products.Remove(productToDelete);
         }
 
         public Product Get(Expression<Func<Product, bool>> filter)
@@ -34,9 +40,14 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
 
-        public void Add(Product product)
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
         {
-            _products.Add(product);
+            throw new NotImplementedException();
+        }
+
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Product product)
@@ -48,17 +59,6 @@ namespace DataAccess.Concrete.InMemory
             productToUpdate.ProductName = product.ProductName;
             productToUpdate.UnitPrice = product.UnitPrice;
             productToUpdate.UnitsInStock = product.UnitsInStock;
-        }
-
-        public void Delete(Product product)
-        {
-            Product productToDelete = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
-            _products.Remove(productToDelete);
-        }
-
-        public List<ProductDetailDto> GetProductDetails()
-        {
-            throw new NotImplementedException();
         }
     }
 }

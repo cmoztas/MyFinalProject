@@ -2,7 +2,7 @@
 {
     public class Result : IResult
     {
-        // sadece getter olan prop, ctor'da setlenebilir.
+        // sadece getter'ı olan prop, ctor'da setlenip gösterilebilir.
 
         public Result(bool success)
         {
@@ -15,8 +15,7 @@
             Message = message;
         }
 
-        public bool Success { get; }
-
         public string Message { get; }
+        public bool Success { get; }
     }
 }

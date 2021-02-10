@@ -7,7 +7,7 @@ namespace Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        readonly ICategoryDal _categoryDal;
+        private readonly ICategoryDal _categoryDal;
 
         public CategoryManager(ICategoryDal categoryDal)
         {

@@ -11,14 +11,14 @@ namespace Core.DataAccess
     // new() : new'lenebilir olmaalı (direkt olarak interface verilmesini engelliyoruz. Interfaceler new'lenemez)
     public interface IEntityRepository<T> where T : class, IEntity, new()
     {
-        List<T> GetAll(Expression<Func<T, bool>> filter = null);
+        void Add(T entity);
+
+        void Delete(T entity);
 
         T Get(Expression<Func<T, bool>> filter);
 
-        void Add(T entity);
+        List<T> GetAll(Expression<Func<T, bool>> filter = null);
 
         void Update(T entity);
-
-        void Delete(T entity);
     }
 }
