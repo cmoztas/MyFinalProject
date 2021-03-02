@@ -20,7 +20,6 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            // Dependency Chain
             var result = _productService.GetAll();
             if (result.Success)
             {
