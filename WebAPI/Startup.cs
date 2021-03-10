@@ -28,6 +28,8 @@ namespace WebAPI
         {
             services.AddControllers();
 
+            services.AddCors();
+
             // IoC altyapýsý - Ýçinde veri tutulmuyorsa singleton kullan. Diðer türlü sepet modülünde biri ürün eklerse herkes eklemþi olur.  biri kaldýrýrsa herkes kaldýrmýþ olur.
 
             // Autofac, ninject, castlewindsor, structuremap, lightinject, dryinject
@@ -66,6 +68,8 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader()); 
 
             app.UseHttpsRedirection();
 

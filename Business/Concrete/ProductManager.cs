@@ -38,10 +38,10 @@ namespace Business.Concrete
 
         #region Public Methods
 
+        [TransactionAspect]
         [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
-        [TransactionAspect]
         public IResult Add(Product product)
         {
             IResult result = BusinessRules.Run(
@@ -71,11 +71,6 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)
-            {
-                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            }
-
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductListed);
         }
 
